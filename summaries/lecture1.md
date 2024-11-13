@@ -20,8 +20,8 @@ One time pad is an example of symmetric encryption where the encryption consists
 
 $$
 \begin{align*}
-    &m: 0110 \\
-    &k: 1100
+    m: &0110 \\
+    k: &1100
 \end{align*}
 $$
 
@@ -44,10 +44,12 @@ So, there must be an equal probability for each message to be encrypted into a s
 We begin by showing that OTP is a symmetric encryption scheme. Consider 
 
 $$
-K = M = C = $\{0,1\}^n \\
-KeyGen(1^n): k \leftarrow $\{0,1\}^n \\
-E(k,m) = m \oplus k \\
-D(k,c) = c \oplus k
+\begin{align*}
+    &K = M = C = $\{0,1\}^n \\
+    &KeyGen(1^n): k \leftarrow $\{0,1\}^n \\
+    &E(k,m) = m \oplus k \\
+    &D(k,c) = c \oplus k
+\end{align*}
 $$
 
 where $\oplus$ represents the XOR operation. We then have correctness (no chance that the message can be corrupted/changed in the process of encryption or decryption) due to the XOR property
@@ -73,7 +75,7 @@ which is exactly the definition of perfect secrecy.
 ### Problems of OTP
 1. Key must be as long as the message
 2. Key can only be used to encrypt one message
-- $c_0 \oplus c_1 = (k \oplus m_0) \oplus (k \oplus m_1) = m_0 \oplus m_1$ 
+  - $c_0 \oplus c_1 = (k \oplus m_0) \oplus (k \oplus m_1) = m_0 \oplus m_1$ 
 3. The ciphertext is malleable
 
 ### Shannon's theorem (1940)
