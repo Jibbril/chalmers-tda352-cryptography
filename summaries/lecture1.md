@@ -35,7 +35,7 @@ $$
 A symmetric encryption scheme $(KeyGen,E,D)$ is perfectly secret if the following holds for all $m_0, m_1$ in $M$:
 
 $$
-Pr[c \leftarrow E(k, m_0) | k \leftarrow KeyGen(1^n)] == Pr[c \leftarrow E(k, m_1) | k \leftarrow KeyGen(1^n)]
+Pr[c \leftarrow E(k, m_0) | k \leftarrow KeyGen(1^n)] = Pr[c \leftarrow E(k, m_1) | k \leftarrow KeyGen(1^n)]
 $$
 
 So, there must be an equal probability for each message to be encrypted into a specific ciphertext. Or the other way around: it must be impossible to know which was the original message for a given ciphertext. 
@@ -74,8 +74,7 @@ which is exactly the definition of perfect secrecy.
 
 ### Problems of OTP
 1. Key must be as long as the message
-2. Key can only be used to encrypt one message
-  - $c_0 \oplus c_1 = (k \oplus m_0) \oplus (k \oplus m_1) = m_0 \oplus m_1$ 
+2. Key can only be used to encrypt one message ($c_0 \oplus c_1 = (k \oplus m_0) \oplus (k \oplus m_1) = m_0 \oplus m_1$)
 3. The ciphertext is malleable
 
 ### Shannon's theorem (1940)
