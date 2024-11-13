@@ -19,7 +19,7 @@ Symmetric encryption is defined as the tuple $(KeyGen,E,D)$ over the key space $
 One time pad is an example of symmetric encryption where the encryption consists of using the logical XOR operation on a messages and a key of the same length. So 
 
 $$
-m: 0110 \\
+m: 0110 \newline
 k: 1100
 $$
 
