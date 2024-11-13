@@ -11,7 +11,7 @@ A cryptographic system should be secure even if everything about the system, exc
 ### Symmetric encryption
 Symmetric encryption is defined as the tuple `(KeyGen,E,D)` over the key space `K`, message space `M`, and ciphertext space `C`. 
 
-- `KeyGen(1^n) -> k` is a randomized algorithm that returns a key.
+- $KeyGen(1^n) \rightarrow k$ is a randomized algorithm that returns a key.
 - `E(k,m)` represents the encryption of a message `m` using key `k`
 - `D(k,m)` represents the decryption of a message `m` using key `k`
 
