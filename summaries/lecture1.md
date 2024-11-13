@@ -6,7 +6,7 @@ A cryptographic system should be secure even if everything about the system, exc
 ### Terminology and notation
 - Notation for drawing randomly from a distribution utilizes the arrow as in $`b \leftarrow \$ \{0,1\}`$. The \$ signifies that it is a uniform sample from the set $`\{0,1\}`$.
 - Conditional probabilities are very common. $Pr[A|B]$ implies "Probability of $A$ given $B$".
-- Adding an exponent to a sample means sampling that number. So $`k \leftarrow {\{0,1\}^n`$ would imply that $k$ is a binary string of length $n$.
+- Adding an exponent to a sample means sampling that number. So $`k \leftarrow \{0,1\}^n`$ would imply that $k$ is a binary string of length $n$.
 
 ### Symmetric encryption
 Symmetric encryption is defined as the tuple $(KeyGen,E,D)$ over the key space $K$, message space $M$, and ciphertext space $C$. 
