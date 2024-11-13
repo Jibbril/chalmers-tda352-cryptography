@@ -3,7 +3,7 @@
 ### Kerchoff's principle (1884)
 A cryptographic system should be secure even if everything about the system, except for the key, is public knowledge.
 
-test: $ \$ a $
+test: $`\$ a`$
 
 and below:
 
