@@ -3,8 +3,15 @@
 ### Kerchoff's principle (1884)
 A cryptographic system should be secure even if everything about the system, except for the key, is public knowledge.
 
+test: $ \$ a $
+
+and below:
+
+$$
+\$ a
+$$
 ### Terminology and notation
-- Notation for drawing randomly from a distribution utilizes the arrow as in $b \leftarrow \mathdollar \{0,1\}$. The $ \mathdollar $ signifies that it is a uniform sample from the set $\{0,1\}$.
+- Notation for drawing randomly from a distribution utilizes the arrow as in $b \leftarrow \$ \{0,1\}$. The $ \$ $ signifies that it is a uniform sample from the set $\{0,1\}$.
 - Conditional probabilities are very common. $Pr[A|B]$ implies "Probability of $A$ given $B$".
 - Adding an exponent to a sample means sampling that number. So $k \leftarrow \{0,1\}^n$ would imply that $k$ is a binary string of length $n$.
 
@@ -19,7 +26,7 @@ Symmetric encryption is defined as the tuple $(KeyGen,E,D)$ over the key space $
 One time pad is an example of symmetric encryption where the encryption consists of using the logical XOR operation on a messages and a key of the same length. So 
 
 $$
-m: 0110 \
+m: 0110 \\
 k: 1100
 $$
 
@@ -42,9 +49,9 @@ So, there must be an equal probability for each message to be encrypted into a s
 We begin by showing that OTP is a symmetric encryption scheme. Consider 
 
 $$
-K = M = C = $\{0,1\}^n
-KeyGen(1^n): k \leftarrow $\{0,1\}^n
-E(k,m) = m \oplus k
+K = M = C = $\{0,1\}^n \\
+KeyGen(1^n): k \leftarrow $\{0,1\}^n \\
+E(k,m) = m \oplus k \\
 D(k,c) = c \oplus k
 $$
 
@@ -53,11 +60,13 @@ where $\oplus$ represents the XOR operation. We then have correctness (no chance
 $$
 D(k, E(k,m)) = k \oplus c = k \oplus (k \oplus m) = m
 $$
+
 Next we consider that there is exactly one key that will encrypt a given message to a specific ciphertext. So 
 
 $$
 Pr[c \leftarrow E(k,m) | k \leftarrow KeyGen(1^n)] = Pr[c \oplus m \leftarrow KeyGen(1^n)] = 1 / |K|
 $$
+
 This is true for all messages, and thus we have that
 
 $$
