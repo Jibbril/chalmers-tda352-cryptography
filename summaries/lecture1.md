@@ -4,9 +4,9 @@
 A cryptographic system should be secure even if everything about the system, except for the key, is public knowledge.
 
 ### Terminology and notation
-- Notation for drawing randomly from a distribution utilizes the arrow as in $b \leftarrow \${0,1}$. The $\$$ signifies that it is a uniform sample from the set ${0,1}$.
+- Notation for drawing randomly from a distribution utilizes the arrow as in $b \leftarrow \$ \{0,1\}$. The $ \$ $ signifies that it is a uniform sample from the set $\{0,1\}$.
 - Conditional probabilities are very common. $Pr[A|B]$ implies "Probability of $A$ given $B$".
-- Adding an exponent to a sample means sampling that number. So $k \leftarrow {0,1}^n$ would imply that $k$ is a binary string of length $n$.
+- Adding an exponent to a sample means sampling that number. So $k \leftarrow \{0,1\}^n$ would imply that $k$ is a binary string of length $n$.
 
 ### Symmetric encryption
 Symmetric encryption is defined as the tuple $(KeyGen,E,D)$ over the key space $K$, message space $M$, and ciphertext space $C$. 
@@ -42,8 +42,8 @@ So, there must be an equal probability for each message to be encrypted into a s
 We begin by showing that OTP is a symmetric encryption scheme. Consider 
 
 $$
-K = M = C = ${0,1}^n
-KeyGen(1^n): k \leftarrow ${0,1}^n
+K = M = C = $\{0,1\}^n
+KeyGen(1^n): k \leftarrow $\{0,1\}^n
 E(k,m) = m \oplus k
 D(k,c) = c \oplus k
 $$
@@ -80,6 +80,6 @@ The proof of this ties to the fact that only one key can generate any one cipher
 ### Pseudorandom Generators (PRGs)
 One of the key takeaways from Shannon's theorem is that perfect secrecy is not very practical due to the large number of keys and ciphertexts needed. To lessen this burden we introduce the concept of Pseudorandom Generators (PRGs). The main idea of a PRG is that it is a function that takes in some shorter key and expands it to some longer length in such a way that an adversary cannot determine whether the end product has been sampled directly from the relevant distribution. More formally:
 
-A PRG is a deterministic function $PRG: {0,1}^n \rightarrow {0,1}^l$ such that $PRG(...)$ is efficiently computable, $l > n$ and the outcome of running $PRG$ is ppseudo-random (no adversary can tell the difference between $PRG(x \leftarrow ${0,1}^n)$ and $y \leftarrow ${0,1}^l$. 
+A PRG is a deterministic function $PRG: \{0,1\}^n \rightarrow \{0,1\}^l$ such that $PRG(...)$ is efficiently computable, $l > n$ and the outcome of running $PRG$ is ppseudo-random (no adversary can tell the difference between $PRG(x \leftarrow $\{0,1\}^n)$ and $y \leftarrow $\{0,1\}^l$. 
 
 There is no mathematical way to prove that a candidate algorithm is a PRG, we can only test extensively and try to see if it works.
