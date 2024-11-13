@@ -46,7 +46,7 @@ We begin by showing that OTP is a symmetric encryption scheme. Consider
 $$
 \begin{align*}
     &K = M = C = $\{0,1\}^n \\
-    &KeyGen(1^n): k \leftarrow $\{0,1\}^n \\
+    &KeyGen(1^n): k \leftarrow \$ \{0,1\}^n \\
     &E(k,m) = m \oplus k \\
     &D(k,c) = c \oplus k
 \end{align*}
@@ -61,13 +61,13 @@ $$
 Next we consider that there is exactly one key that will encrypt a given message to a specific ciphertext. So 
 
 $$
-Pr[c \leftarrow E(k,m) | k \leftarrow KeyGen(1^n)] = Pr[c \oplus m \leftarrow KeyGen(1^n)] = 1 / |K|
+Pr[c \leftarrow E(k,m) | k \leftarrow KeyGen(1^n)] = Pr[c \oplus m \leftarrow KeyGen(1^n)] = \frac{1}{|K|}
 $$
 
 This is true for all messages, and thus we have that
 
 $$
-Pr[c \leftarrow E(k, m_0) | k \leftarrow KeyGen(1^n)] = Pr[c \leftarrow E(k, m_1) | k \leftarrow KeyGen(1^n)] = 1 / |K|
+Pr[c \leftarrow E(k, m_0) | k \leftarrow KeyGen(1^n)] = Pr[c \leftarrow E(k, m_1) | k \leftarrow KeyGen(1^n)] = \frac{1}{|K|}
 $$
 
 which is exactly the definition of perfect secrecy.
@@ -78,13 +78,13 @@ which is exactly the definition of perfect secrecy.
 3. The ciphertext is malleable
 
 ### Shannon's theorem (1940)
-If a symmetric encryption scheme (KeyGen,E,D) defined over (K,M,C) has perfect secrecy then $|K| >= |M|$.
+If a symmetric encryption scheme (KeyGen,E,D) defined over (K,M,C) has perfect secrecy then $|K| \geq |M|$.
 
 The proof of this ties to the fact that only one key can generate any one ciphertext. If any one key could generate two different ciphertexts from the same message we would instantly lose correctness since decryption would become ambigous. As such, we know that for each message there must exist at least one key, which means that the total number of keys must be larger or equal to the total number of messages, meaning that $|K| >= |M|$.
 
 ### Pseudorandom Generators (PRGs)
 One of the key takeaways from Shannon's theorem is that perfect secrecy is not very practical due to the large number of keys and ciphertexts needed. To lessen this burden we introduce the concept of Pseudorandom Generators (PRGs). The main idea of a PRG is that it is a function that takes in some shorter key and expands it to some longer length in such a way that an adversary cannot determine whether the end product has been sampled directly from the relevant distribution. More formally:
 
-A PRG is a deterministic function $PRG: \{0,1\}^n \rightarrow \{0,1\}^l$ such that $PRG(...)$ is efficiently computable, $l > n$ and the outcome of running $PRG$ is ppseudo-random (no adversary can tell the difference between $PRG(x \leftarrow $\{0,1\}^n)$ and $y \leftarrow $\{0,1\}^l$. 
+A PRG is a deterministic function $`PRG: \{0,1\}^n \rightarrow \{0,1\}^l`$ such that $PRG(...)$ is efficiently computable, $l > n$ and the outcome of running $PRG$ is ppseudo-random (no adversary can tell the difference between $`PRG(x \leftarrow \$ \{0,1\}^n)`$ and $`y \leftarrow \$ \{0,1\}^l`$. 
 
 There is no mathematical way to prove that a candidate algorithm is a PRG, we can only test extensively and try to see if it works.
