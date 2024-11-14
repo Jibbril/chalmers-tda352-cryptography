@@ -12,7 +12,7 @@ pub fn run_example() {
     let key = 0xAB; 
     let nonce = 1;
 
-    let message_to_send = "My super secret message!"; // ASCII for ['A', 'B', 'C', 'D']
+    let message_to_send = "My super secret counter message!"; // ASCII for ['A', 'B', 'C', 'D']
 
     let ciphertext = alice.encrypt_msg(message_to_send, nonce, key);
     eve.eavesdrop(&ciphertext);
