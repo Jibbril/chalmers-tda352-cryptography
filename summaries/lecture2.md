@@ -82,7 +82,7 @@ $$
 \begin{align*}
 m_0 &= (block0,block1) \\
 m_1 &= (block1,block1) \\
-\begin{align*}
+\end{align*}
 $$
 
 they can simply look at the returned $c = (c_0,c_1)$ to determine $b$. If $c_0 = c_1$ then $b=1$, else $b = 0$.
