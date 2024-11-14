@@ -1,4 +1,8 @@
 pub fn run_example() {
+    println!("===============================================");
+    println!("========= Starting Counter example ============");
+    println!("===============================================");
+    
     let alice = Participant::new("Alice");
     let bob = Participant::new("Bob");
     let eve = Participant::new("Eve");
