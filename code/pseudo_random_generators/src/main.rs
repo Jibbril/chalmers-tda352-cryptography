@@ -5,14 +5,13 @@ fn main() {
     let p = 10007;
     let q = 10009;
     let modulus = p * q;
-    let exponent = 65537; // Must be coprime to N
+    let exponent = 65537; // Must be coprime to modulus
 
     let x = 5; // Initial value/key of length shorter than l
     let l: u64 = 128; // Length of desired key
 
-    let mut bits = vec![least_significant_bit(x)];
-
     let mut base = x;
+    let mut bits = vec![least_significant_bit(base)];
 
     for _ in 0..l-1 {
         base = mod_exp(base, exponent, modulus);
