@@ -48,8 +48,8 @@ A block cipher is a function that builds on the concept of PRPs. Given some key 
 
 $$
 \begin{align*}
-E(k,\cdot)&: \{0,1\}^n \rightarrow \{0,1\}^n \\
-D(k,\cdot)&: \{0,1\}^n \rightarrow \{0,1\}^n
+E(k,\cdot):\ \{0,1\}^n \rightarrow \{0,1\}^n \\
+D(k,\cdot):\ \{0,1\}^n \rightarrow \{0,1\}^n
 \end{align*}
 $$
 
