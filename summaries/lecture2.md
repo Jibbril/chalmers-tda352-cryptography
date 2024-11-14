@@ -56,20 +56,21 @@ D(k,\cdot):\ \{0,1\}^n \rightarrow \{0,1\}^n
 exist and have the property that 
 
 $$
-D(k, E(k,m)) = m \quad \forall m \in \{0,1}^n
+D(k, E(k,m)) = m, \quad \forall m \in \{0,1}^n
 $$
 
 Or in other words: $E$ is invertible knowing the key $k$.
 
-A key point of this system is that now the same key $k$ can be used to encrypt/decrypt multiple messages (as compared to OTP where each key could only be used once).
+A key point of this system is that now the same key $k$ can be used to encrypt/decrypt multiple messages (as compared to OTP where each key could only be used once). This is due to the pseudo random nature of $E$ giving that an efficient adversary cannot find the original message without having access to the key $k$ used to run $E(k,\cdot)$.
 
 ### Chosen paintext attack (security notion for block ciphers)
-The aim for the chosen plaintext attack is to quantify an adversarys likelihood of breaking a block cipher. It starts by allowing an adversary to send polynomially many (think $2^{60}$) messages to the challenger and receiving them back encrypted using the same key. The adversary is then allowed to send atuple of two new messages of the same length from which the challenger will flip a bit $b$ and randomly encrypt the corresponding message and return it to the adversary. If the adversary can successfully guess which message was encrypted he wins. 
+The aim for the chosen plaintext attack is to quantify an adversarys likelihood of breaking a block cipher. It starts by allowing an adversary to send polynomially many (think $2^{60}$) messages to the challenger and receiving them back encrypted using the same key. The adversary is then allowed to send a tuple of two new messages of the same length from which the challenger will flip a bit $b$ and randomly encrypt the corresponding message and return it to the adversary. If the adversary can successfully guess which message was encrypted he wins. 
 
 ### Feistel networks
 A recurring idea when using block ciphers is to recursively shuffle the message that is to be encrypted. In feistel networks, the cipher function $F$ is the same for every round, and it does not need to be invertible for the entire round to be invertible. However, decryption is equal to encryption, but with the round-keys in reverse order.
 
 ### Operation modes for block ciphers
+**Note that there are code examples available in the code folder for all modes below.**
 
 #### Electronic Code Book Mode (ECB)
 In this mode, each block gets encrypted separately using the same key. The benefits of this is that it is easy to understand and implement as well as highly parallelizable which increases speed. However, it is not recommended for real world use in cryptographic protocols as there are serious weaknesses.
@@ -80,15 +81,15 @@ In this scenario, if the adversary sends
 
 $$
 \begin{align*}
-m_0 &= (block0,block1) \\
-m_1 &= (block1,block1) \\
+    &m_0 = (block0,block1) \\
+    &m_1 = (block1,block1) \\
 \end{align*}
 $$
 
 they can simply look at the returned $c = (c_0,c_1)$ to determine $b$. If $c_0 = c_1$ then $b=1$, else $b = 0$.
 
 #### Cipher Block Chaining Mode (CBC)
-In this mode, in addition to the regular encryption, the output from the previous block is XORd with the second message before encryption. For the initial block an initialization vector for the first XOR is required. In this way a link is created between the blocks which avoids many of the problems related to the ECB mode. However, there are some drawbacks. For example, encryption is sequential which reduces speed.
+In this mode, in addition to the regular encryption, the output from the previous block is XORed with the second message before encryption. For the initial block an initialization vector for the first XOR is required. In this way a link is created between the blocks which avoids many of the problems related to the ECB mode. However, there are some drawbacks. For example, encryption is sequential which reduces speed.
 
 #### Counter mode 
 Counter mode is a bit more involved than the previous two, but the general idea is similar to CBC. However, instead of using the previous ciphertext to XOR, we here introduce a nonce that gets incremented for each block that is encrypted. 
