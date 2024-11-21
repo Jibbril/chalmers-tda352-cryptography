@@ -1,5 +1,4 @@
 use std::time::Duration;
-
 use chrono::Utc;
 use rand::{thread_rng, Rng};
 use serde::{Deserialize, Serialize};
@@ -7,21 +6,20 @@ use sha2::{Digest, Sha256};
 
 /// Small example of a blockchain
 
-/// The variables below can be used to control how fast the chain is allowed to 
-/// add blocks and how much it logs to the terminal. 
-///
-// Number of zeros required in hash to allow new block on chain
+// The variables below can be used to control how fast the chain is allowed to 
+// add blocks, and how much it logs to the terminal. 
+
+// Number of zeros required in hash to allow new block on chain, higher numbers
+// mean harder to find a successful block
 const ACCEPT_SIZE: usize = 2;
 
-// Millis used to slow down nonce generation to avoid spamming the terminal, 
-// higher values mean slower chain generation.
+// Milliseconds of sleep when generating a new nonce, higher values mean slower 
+// chain generation.
 const NONCE_GENERATION_DELAY: u64 = 40;
 
-// How often to print the generated nonce to the terminal while searching for 
-// nonce for a new block. Higher values means fewer logs
+// How often to print the generated nonces to the terminal while searching for 
+// a new nonce. Higher values means fewer logs
 const NONCE_LOGGING_MODULO: u64 = 50;
-
-
 
 
 fn main() {
