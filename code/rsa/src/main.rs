@@ -51,8 +51,8 @@ impl Participant {
     fn init_alice() -> Self {
         Participant {
             name: "Alice".to_string(),
-            p: 5, // Prime chosen by Bob, much larger in reality
-            q: 13, // Prime chosen by Bob, much larger in reality
+            p: 5, // Prime chosen by Alice, much larger in reality
+            q: 13, // Prime chosen by Alice, much larger in reality
             n: None, 
             e: None,
             d: None, 

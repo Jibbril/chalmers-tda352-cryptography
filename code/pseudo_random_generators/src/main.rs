@@ -1,5 +1,5 @@
 /// Small implementation of the RSA PRG based on the least significant bit that 
-/// if shown in the lecture slides
+/// is shown in the lecture slides
 fn main() {
     // In reality these primes would be much larger
     let p = 10007;

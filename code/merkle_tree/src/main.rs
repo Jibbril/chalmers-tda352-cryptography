@@ -2,7 +2,7 @@ use sha2::{Digest, Sha256};
 
 /// Simple illustration of how a Merkle tree can be (partially) implemented.
 fn main() {
-    // Set up remaining leaves, including verifier
+    // Set up leaves
     let leaves = vec![
         b"Leaf1".as_slice(),
         b"Leaf2".as_slice(),
@@ -42,7 +42,7 @@ impl MerkleNode {
     }
 
     fn combine(left: MerkleNode, right: MerkleNode) -> Self {
-        // Hash left an right together
+        // Hash left and right together
         let mut hasher = Sha256::new();
         hasher.update(&left.hash);
         hasher.update(&right.hash);
@@ -105,8 +105,7 @@ impl MerkleTree {
                     next.push(MerkleNode::combine(chunk[0].clone(),chunk[0].clone()));
                 } else {
                     // Two nodes, hash together
-                    let new = MerkleNode::combine(chunk[0].clone(), chunk[1].clone());
-                    next.push(new);
+                    next.push(MerkleNode::combine(chunk[0].clone(), chunk[1].clone()));
                 }
             }
 
