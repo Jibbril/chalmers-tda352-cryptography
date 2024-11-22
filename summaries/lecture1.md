@@ -1,6 +1,6 @@
 # Lecture 1
 
-### Kerchoff's principle (1884)
+### Kerckhoff's principle (1884)
 A cryptographic system should be secure even if everything about the system, except for the key, is public knowledge.
 
 ### Terminology and notation

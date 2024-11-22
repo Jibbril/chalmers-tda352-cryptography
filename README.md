@@ -1,2 +1,2 @@
 # TDA352 Cryptography
-This repo contains lecture summaries as well as code examples for most topics covered in the TDA352 course in cryptography at Chalmers.
+This repo contains lecture summaries as well as code examples for most topics covered in the TDA352 course in cryptography at Chalmers. Since this is mainly for my own learning, there is no guarantee that all topics covered in the lectures/slides will be included, but most will probably be added eventually. Additionally, there is definately a risk of errors and/or misunderstandings of various topics since I am writing as I learn. However, hopefully this will not be too common.  
