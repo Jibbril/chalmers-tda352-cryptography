@@ -105,10 +105,10 @@ The RSA protocol assumes that given $(N,e,y)$ s.t
 ```math
 
 \begin{align*}
-    N = p\times q \\
-    log_2(p) = log_2(q) = n \\ 
-    e \in Z^*_{\phi(N)} \\ 
-    y \in Z^*_N
+    &N = p\times q \\
+    &log_2(p) = log_2(q) = n \\ 
+    &e \in Z^*_{\phi(N)} \\ 
+    &y \in Z^*_N
 \end{align*}
 ```
 
