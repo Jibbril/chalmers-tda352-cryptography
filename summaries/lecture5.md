@@ -14,8 +14,8 @@ A generator is some $g \in G$ such that when the function $\oplus$ is applied to
 
 ```math
 \begin{align*}
-    &g^0 = 1 \\
-    &g^1 = 2 \\
+    &g^0 & & & = 1 \\
+    &g^1 & & & = 2 \\
     g \oplus g = g \times g = &g^2      &= 2 ^ 2            &                       &= 4 \mod 11 \\
     g \oplus g \oplus g     = &g^3      &= g^2 \times g     &= 4 \times 2           &= 8 \mod 11 \\
     g \oplus \dots \oplus g = &g^4      &= g^2 \times g^2   &= 4 \times 4           &= 5 \mod 11 \\
