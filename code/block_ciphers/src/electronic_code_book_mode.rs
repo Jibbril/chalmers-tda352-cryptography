@@ -10,7 +10,7 @@ pub fn run_example() {
     // In reality this key would be much longer
     let key = 0xAB; 
 
-    let message_to_send = "My super secret ECB message!"; // ASCII for ['A', 'B', 'C', 'D']
+    let message_to_send = "My super secret ECB message!"; 
 
     let ciphertext = alice.encrypt_msg(message_to_send, key);
     eve.eavesdrop(&ciphertext);

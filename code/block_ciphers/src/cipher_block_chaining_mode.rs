@@ -11,7 +11,7 @@ pub fn run_example() {
     let key = 0xAB; 
     let initialization_vector = 0x00;
 
-    let message_to_send = "My super secret CBC message!"; // ASCII for ['A', 'B', 'C', 'D']
+    let message_to_send = "My super secret CBC message!"; 
 
     let ciphertext = alice.encrypt_msg(message_to_send, key, initialization_vector);
     eve.eavesdrop(&ciphertext);

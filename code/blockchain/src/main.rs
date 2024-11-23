@@ -31,7 +31,6 @@ fn main() {
             .expect("Expected at least one block");
         let new_block = Block::create_random(&prev, &mut nonce_generator);
 
-
         blockchain.add_block(new_block);
     }
 }
