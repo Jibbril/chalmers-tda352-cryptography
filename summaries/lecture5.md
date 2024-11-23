@@ -15,15 +15,15 @@ A generator is some $g \in G$ such that when the function $\oplus$ is applied to
 ```math
 \begin{align*}
     g = 2 \\
-    g \oplus g = g \times g &= g^2 = 2 ^ 2 = 4 \mod 11 \\
-    g \oplus g \oplus g     &= g^3 = g^2 \times g = 4 \times 2 = 8 \mod 11 \\
-    g \oplus \dots \oplus g &= g^4 = g^2 \times g^2 = 4 \times 4 = 16 = 5 \mod 11 \\
-    \dots                   &= g^5 = g^4 \times g = 5 \times 2 \mod 11 = 10 \mod 11 \\
-    \dots                   &= g^6 = g^4 \times g^2 = 5 * 4 \mod 11 = 9 \mod 11 \\
-    \dots                   &= g^7 = g^6 \times g = 9 * 2 \mod 11 = 7 \mod 11 \\
-    \dots                   &= g^8 = g^6 \times g^2 = 9 * 4 \mod 11 = 3 \mod 11 \\
-    \dots                   &= g^9 = g^8 \times g = 3 * 2 \mod 11 = 6 \mod 11 \\
-    \dots                   &= g^{10} = g^8 \times g^2 = 3 * 4 \mod 11 = 1 \mod 11 \\
+    g \oplus g = g \times g &= g^2 &= 2 ^ 2 &= 4 \mod 11 \\
+    g \oplus g \oplus g     &= g^3 &= g^2 \times g &= 4 \times 2 = 8 \mod 11 \\
+    g \oplus \dots \oplus g &= g^4 &= g^2 \times g^2 &= 4 \times 4 = 16 = 5 \mod 11 \\
+    \dots                   &= g^5 &= g^4 \times g &= 5 \times 2 \mod 11 = 10 \mod 11 \\
+    \dots                   &= g^6 &= g^4 \times g^2 &= 5 * 4 \mod 11 = 9 \mod 11 \\
+    \dots                   &= g^7 &= g^6 \times g &= 9 * 2 \mod 11 = 7 \mod 11 \\
+    \dots                   &= g^8 &= g^6 \times g^2 &= 9 * 4 \mod 11 = 3 \mod 11 \\
+    \dots                   &= g^9 &= g^8 \times g &= 3 * 2 \mod 11 = 6 \mod 11 \\
+    \dots                   &= g^{10} &= g^8 \times g^2 &= 3 * 4 \mod 11 = 1 \mod 11 \\
 \end{align*}
 ```
 
@@ -34,7 +34,7 @@ If a group has at least one generator it is called a **cyclic group**.
 
 
 #### Abelian groups
-A group $(G,\oplus)$ is commutative (abelian) if $g \oplus h = h \oplus g \quad \forall g,h \in G$.
+A group $(G,\oplus)$ is commutative (abelian) if $g \oplus h = h \oplus g \ \forall g,h \in G$.
 
 #### Order of groups
 The **order** of a group is the number of elements in it. $ord(G) = |G|$. However, the **order** of an element _in_ a group is the number of times $\oplus$ needs to be applied to itself to reach the unit number. So for some $h \in G$, how many times must we compute $h \oplus h$ until $h \oplus \dots \oplus h = e$

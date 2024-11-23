@@ -28,7 +28,7 @@ Given the structure of MACs, we also want some way of reasoning about the reliab
 In this scenario, a MAC is said to be secure if 
 
 ```math
-Pr[Ver(k, m^*,t^*) = 1 | (m^*,t^*) \leftarrow Adversary \and m^* is new] \leq negl(n)
+Pr[Ver(k, m^*,t^*) = 1 | (m^*,t^*) \leftarrow Adversary, m^* \ \text{is new}] \leq negl(n)
 ```
 
 ### CBC-MAC
