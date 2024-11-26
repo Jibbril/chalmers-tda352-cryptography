@@ -1,7 +1,7 @@
 # Lecture 6
 
-### Examples of algbraic trapdoor functions
-- **Integer factorisation**: $f(p,q) = N = p \cdot q$. Trapdoor: $(p,q)
+### Examples of algebraic trapdoor functions
+- **Integer factorisation**: $f(p,q) = N = p \cdot q$. Trapdoor: $(p,q)$
 - **Discrete log**: $`f(x) = h = g^x \mod p`$. Trapdoor: $x$
 - **RSA**: $`f_{N,e}(x) = y = x^e \mod N`$. Trapdoor: $d$, the inverse of $e \mod \varphi(x)$
 
@@ -9,8 +9,8 @@
 A (one-way) trapdoor permutation is a tuple $(KeyGen,F,I)$ where 
 
 - $`KeyGen(1^n) \rightarrow (pk,sk)`$ is a probabilistic key generation algorithm outputting a public and a private key.
-- $`F(pk,\cdot): X -> Y`$ is efficiently computable
-- $`I(sk,\cdot): Y -> X`$ is efficiently computable
+- $`F(pk,\cdot): X \rightarrow Y`$ is efficiently computable
+- $`I(sk,\cdot): \rightarrow X`$ is efficiently computable
 - $F$ is hard to invert without knowing $sk$
 
 ### RSA 
@@ -41,10 +41,10 @@ It is worth noting that the textbook RSA implementation does not fulfil the dema
 \end{align*}
 ```
 
-However, there are variations on the standard RSA scheme which solves this problem. To make RSA EUF-CMA secure we have RSA-FDHS, and to make RSA IND-CCA safe, use RSA-OAEP. 
+However, there are variations on the standard RSA scheme that solve this problem. To make RSA EUF-CMA secure we have RSA-FDHS, and to make RSA IND-CCA safe, use RSA-OAEP. 
 
 ### The Hash and Sign Paradigm  (Full Domain Hash Signatures)
-One way of conceptualising hash signatures is by using $F$ and $I$ in reverse order. So consider a $Sign$ function that uses a message $m$ and the secret key $sk$ to compute a signature $\sigma = I(sk,H(m))$ where $H$ is some hash function. A verifier $Ver$ could then be built by computing $F(pk,\sigma) = H(m)$. In this way, a sender can encrypt a message using their own private key, and everyone else can verify it using the corresponding public key. Given this scenario, the following theorem is true (although not proved in this course):
+One way of conceptualising hash signatures is by using $F$ and $I$ in reverse order. So consider a $Sign$ function that uses a message $m$ and the secret key $sk$ to compute a signature $\sigma = I(sk,H(m))$ where $H$ is some hash function. A verifier $Ver$ could then be built by computing $F(pk,\sigma) = H(m)$. In this way, a sender can encrypt a message using their own private key, and everyone else can verify it using the corresponding public key. Given this scenario, the following theorem is true (although not proven in this course):
 
 If $`(KeyGen_{TD},F,I)`$ is a one-way trapdoor function and $H$ is a random oracle, then FDHS is a chosen message attack secure digital signature scheme. 
 
