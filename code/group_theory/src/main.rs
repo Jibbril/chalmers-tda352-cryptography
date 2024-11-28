@@ -1,21 +1,26 @@
 use std::collections::HashSet;
 
 fn main() {
-    // Set up vec of integers from 0 to 10
-    let s: Vec<Element> = (0..=10).map(|i| Element(i)).collect();
+    let p = 19;
+    let candidate_generator = 2;
 
-    // Decide a test element to check order/generator status for
-    let test_element = Element(2);
+    // Set up elements for group Z_p^*
+    let s: Vec<Element> = (0..p)
+        .filter(|&i| gcd(i, p) == 1)
+        .map(|i| Element(i))
+        .collect();
+
 
     // Create group operation as a closure
     let mul_closure = |e1: &Element, e2: &Element| 
-        Element::multiplication(&e1, &e2, s.len() as u32);
+        Element::multiplication(&e1, &e2, p);
 
     // Create group
     let group = Group::new(&s, mul_closure);
 
     println!("Group has order: {}", group.order());
 
+    let test_element = Element(candidate_generator);
     let el_is_generator = group.has_generator(&test_element);
 
     println!(
@@ -120,7 +125,8 @@ where
         }
 
         // There should only be one element left in the set if g is a generator
-        s.len() == 1
+        // println!("slen: {}", s.len());
+        s.len() == 0
     }
 }
 
@@ -129,8 +135,19 @@ struct Element(u32);
 
 impl Element {
     fn multiplication(a: &Element, b: &Element, modulo: u32) -> Self {
-        let product = (a.0 * b.0) % modulo;
-        // println!("Multiplying {} times {} mod {}, got {}",a.0, b.0, modulo, product);
-        Element(product)
+        let product = a.0 * b.0;
+        // println!("Multiplying {} times {}, got {}",a.0, b.0, product);
+        let mod_product =  product % modulo;
+
+        // println!("Taking {} modulo {}, got: {}",product, modulo, mod_product);
+        Element(mod_product)
+    }
+}
+
+fn gcd(a: u32, b: u32) -> u32 {
+    if b == 0 {
+        a
+    } else {
+        gcd(b, a % b)
     }
 }
