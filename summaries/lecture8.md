@@ -84,7 +84,7 @@ The symmetric ratchet is a function $KDF_2$ which accepts a chaining key $`ck^{(
 The assymetric ratchet is a complementary function that accepts a previous root key $`r^{(i)}`$ as well as a DH key $`k_{DH}^{(i+1)}`$ and outputs a subsequent root key $`r^{(i+1)}`$ as well as an initial chaining key $`ck^{(i+1,0)}`$.
 ```math
 \begin{equation*}
-    KDF_1(r^{(i)}, k_{DH}^{(i+1)})
+    KDF_1(rk^{(i)}, k_{DH}^{(i+1)}) = (rk^{(i+1)}, ck^{(i + 1, 0)})
 \end{equation*}
 ```
 where 
