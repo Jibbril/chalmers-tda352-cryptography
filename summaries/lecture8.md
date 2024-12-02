@@ -93,7 +93,7 @@ where
 \begin{equation*}
     k_{DH}^{(i)} = (rchpk_B^{(i-1)})^{rchsk_A^{(i)}}
     = (rchpk_A^{(i)})^{rchsk_B^{(i-1)}}
-\end{equation*
+\end{equation*}
 ```
 for some 
 ```math
