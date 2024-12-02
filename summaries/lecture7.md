@@ -22,7 +22,7 @@ Examples of Diffie-Hellman, Elgamal and RSA are available in the code examples.
 |IND-CPA?   | no            | yes*      | yes*      |
 |IND-CCA?   | no            | no        | yes*      |
 
-* under the corresponding computational assumptions
+$*$ under the corresponding computational assumptions
 
 ### Homomorphic encryption
 There are two versions of homomorphic encryption, linear and full.
