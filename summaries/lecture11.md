@@ -5,6 +5,7 @@ When talking about zero-knowledge proofs and $\Sigma$-protocols in particular, w
 - The Prover sends a value $a$ to the Verifier
 - The Verifier returns a value $e$ to the Prover
 - The Prover sends a value $z$ back to the Verifier who either accepts or rejects
+
 The protocol satisfies the following three properties: 
 - __Completeness__: If P and V follow the protocol on some input $x$ and private input $w$ where $(x,w) \in R$, then V always accepts.
 - __Special Soundness__: There exists some PPT algorithm $E$ (extractor) that for any pair of accepting transcripts $(a,e,z)$, $(a,e',z')$ for $x$ with $e \neq e'$, outputs $w$ s.t. $(x,w) \in R$.
@@ -16,7 +17,7 @@ Intuitively, these three properties can be understood as
 - __Special honest verifier zero knowledge (SHVZK)__: A transcript does not leak the witness (since the transcript could be efficiently simulated)
 
 ### Schnorr $\Sigma$-Protocol
-In the Schnorr $\Sigma$-Protocol the verifyer wants to prove that they have knowledge to a private key $`h = g^w`$ where $G = \langle g \rangle$ is a group of large prime order $q$. For the prover to show this, the following steps are taken: 
+In the Schnorr $\Sigma$-Protocol the verifier wants to prove that they have knowledge to a private key $`h = g^w`$ where $G = \langle g \rangle$ is a group of large prime order $q$. For the prover to show this, the following steps are taken: 
 - First, the prover samples some randomness $`r \leftarrow \$Z_q`$ and computes the value $`a = g^r \in G`$. 
 - Secondly, the Verifier samples some other value $`e \leftarrow \$Z_q`$ that they pass back to the Prover
 - The prover calculates $`z = r + e \cdot w \in Z_q`$ and passes it to the verifier

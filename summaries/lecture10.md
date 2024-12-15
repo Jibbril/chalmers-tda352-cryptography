@@ -24,7 +24,7 @@ An ZKP needs to be
 ### Blind Signatures (intuition)
 A blind signature scheme is a signature  scheme where the signing algorithm is replaced by an interactive protocol run between a signer and a receiver. Although not described in detail here, the interaction will result in the receiver obtaining a signature $\sigma$ on a message $m$, while the sender learns nothing about $m$ nor $\sigma$.
 
-A practical example is given by a scenario where a bank wants to sign some eCoin. In this scenario, Alice begins by taking the amount of money $x$ that she wants to spend, hashing it and multiplying it with some random number only she knows. She thus gets 
+A practical example is given by a scenario where a bank wants to sign some eCoin. In this scenario, Alice begins by taking the amount of money $x$ that she wants to spend, hashing it and multiplying it with some random number only she knows. She gets 
 ```math
 \begin{equation*}
     B = r^e H(x) \mod n
