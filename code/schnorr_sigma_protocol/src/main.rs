@@ -48,7 +48,6 @@ impl Participant {
         let w = rng.gen_range(1..P - 1);
         self.w = Some(w);
 
-
         let h = mod_exp(G, w, P);
         self.h = Some(h);
 
@@ -81,7 +80,7 @@ impl Participant {
     fn generate_challenge(&mut self) -> u64 {
         let mut rng = rand::thread_rng();
 
-        let challenge = rng.gen_range(1..P); 
+        let challenge = rng.gen_range(1..P);
         self.e = Some(challenge);
 
         println!("{} generated the challenge e = {}", self.name, challenge);
@@ -101,10 +100,10 @@ impl Participant {
         let z = (r + e * w) % (P - 1);
 
         println!("{} generated the response z = {}", self.name, z);
-        
+
         z
     }
-    
+
     fn receive_response(&self, response: u64) {
         let a = self.a.expect("Expected a when receiving response");
         let e = self.e.expect("Expected e when receiving response");
@@ -112,11 +111,17 @@ impl Participant {
 
         let left = mod_exp(G, response, P);
 
-        println!("{} found left-hand side:  {}^{} mod {} = {}", self.name, G, response, P, left);
+        println!(
+            "{} found left-hand side:  {}^{} mod {} = {}",
+            self.name, G, response, P, left
+        );
 
         let right = (a * mod_exp(h, e, P)) % P;
 
-        println!("{} found right-hand side:  {} * {}^{} mod {} = {}", self.name, a, h, e, P, right);
+        println!(
+            "{} found right-hand side:  {} * {}^{} mod {} = {}",
+            self.name, a, h, e, P, right
+        );
 
         println!("{} checked {} = {}", self.name, left, right);
 
@@ -142,4 +147,3 @@ fn mod_exp(base: u64, exp: u64, modulus: u64) -> u64 {
     }
     result
 }
-
