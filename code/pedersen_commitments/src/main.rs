@@ -15,7 +15,7 @@ fn main() {
     println!("At a later point in time...");
     println!("");
 
-    let (m,r) = alice.reveal_values();
+    let (m, r) = alice.reveal_values();
     bob.validate_commitment(m, r);
 }
 
@@ -35,17 +35,17 @@ impl Participant {
     }
 
     fn create_commitment(&mut self) -> u64 {
-        let mut rng =rand::thread_rng(); 
+        let mut rng = rand::thread_rng();
 
-        let m = rng.gen_range(0..(P-1));
-        let mut r = rng.gen_range(0..(P-1));
+        let m = rng.gen_range(0..(P - 1));
+        let mut r = rng.gen_range(0..(P - 1));
 
         // Ensure m != r
         loop {
             if m == r {
-                r = rng.gen_range(0..(P-1));
+                r = rng.gen_range(0..(P - 1));
                 continue;
-            } 
+            }
 
             break;
         }
@@ -60,7 +60,7 @@ impl Participant {
         commitment
     }
 
-    fn receive_commitment(&mut self, c:u64) {
+    fn receive_commitment(&mut self, c: u64) {
         self.m = Some(c);
         println!("{} received the commitment {}", self.name, c);
     }
@@ -78,7 +78,10 @@ impl Participant {
         let new_c = (mod_exp(G, m, P) * mod_exp(H, r, P)) % P;
         let prev_c = self.m.expect("Expected c");
 
-        println!("{} validates message {} and randomness {} against previous commitment {}", self.name, m, r, prev_c);
+        println!(
+            "{} validates message {} and randomness {} against previous commitment {}",
+            self.name, m, r, prev_c
+        );
 
         if new_c == prev_c {
             println!("Validation successful!");
@@ -106,4 +109,3 @@ fn mod_exp(base: u64, exp: u64, modulus: u64) -> u64 {
 
     result
 }
-
