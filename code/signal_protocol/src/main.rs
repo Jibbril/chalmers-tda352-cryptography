@@ -11,14 +11,16 @@ const P: u64 = 233;
 const G: u64 = 3;
 
 fn main() {
-    println!("Hello, world!");
     let group = ModGroup::new(P, G);
 
-    let alice = Participant::new("Alice", &group);
-    let bob = Participant::new("Bob", &group);
+    let mut alice = Participant::new("Alice", &group);
+    let mut bob = Participant::new("Bob", &group);
 
     let mut server = Server::new();
+    server.register(&mut alice);
+    server.register(&mut bob);
 
-    server.register(&alice);
-    server.register(&bob);
+    let bob_keys = server.request_contact_details_for(&bob.name.clone());
+    alice.receive_keys(bob_keys);
+    
 }
