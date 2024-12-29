@@ -21,6 +21,8 @@ fn main() {
     server.register(&mut bob);
 
     let bob_keys = server.request_contact_details_for(&bob.name.clone());
-    alice.receive_keys(bob_keys);
+    let contact_payload = alice.receive_keys(bob_keys);
+
+    bob.receive_initial_message(contact_payload);
     
 }

@@ -33,21 +33,41 @@ impl <'a> Participant<'a> {
         }
     }
 
-    pub fn receive_keys(&mut self, keys: (u64, u64, (usize, u64))) -> (usize, u64) {
+    pub fn receive_keys(&mut self, keys: (u64, u64, (usize, u64))) -> (usize, (u64, u64)) {
         let (pk, mtpk, (i,ephpk)) = keys;
 
         let ephsk = self.ephsks.pop().expect("Expected ephsk when receiving keys.");
+        let self_ephpk = self.ephpks.pop().expect("Expected ephpk when receiving keys.");
 
         let mut ms = 1;
-        ms *= mod_exp(mtpk, self.sk, self.group.modulo);
-        ms *= mod_exp(pk, ephsk, self.group.modulo);
-        ms *= mod_exp(mtpk, ephsk, self.group.modulo);
-        ms *= mod_exp(ephpk, ephsk, self.group.modulo);
+        ms *= mod_exp(mtpk, self.sk, self.group.modulo) % self.group.modulo;
+        ms *= mod_exp(pk, ephsk, self.group.modulo) % self.group.modulo;
+        ms *= mod_exp(mtpk, ephsk, self.group.modulo) % self.group.modulo;
+        ms *= mod_exp(ephpk, ephsk, self.group.modulo) % self.group.modulo;
 
         self.ms = Some(ms);
 
-        let ad = (self.pk * ephsk) % self.group.modulo;
+        println!("{} generated ms: {}", self.name, ms);
+
+        let ad = (self.pk, self_ephpk);
 
         (i,ad)
+    }
+
+    pub fn receive_initial_message(&mut self, (i, ad): (usize,(u64,u64))) {
+        let (pk, ephpk) = ad;
+
+        let ephsk = self.ephsks.remove(i);
+        let _ = self.ephpks.remove(i);
+
+        let mut ms = 1;
+        ms *= mod_exp(pk, self.mtsk, self.group.modulo) % self.group.modulo;
+        ms *= mod_exp(ephpk, self.sk, self.group.modulo) % self.group.modulo;
+        ms *= mod_exp(ephpk, self.mtsk, self.group.modulo) % self.group.modulo;
+        ms *= mod_exp(ephpk, ephsk, self.group.modulo) % self.group.modulo;
+
+        self.ms = Some(ms);
+
+        println!("{} generated ms: {}", self.name, ms);
     }
 }
